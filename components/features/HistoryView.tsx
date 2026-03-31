@@ -71,7 +71,7 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ onReply, limit }) => {
                          card.status === "Open" ? "text-black" : "text-white"
                        )}>What Happened</h3>
                        <p className={cn(
-                         "font-outfit text-sm leading-snug line-clamp-2 overflow-hidden",
+                         "font-outfit text-sm leading-snug line-clamp-2 overflow-hidden break-words",
                          card.status === "Open" ? "text-black/80" : "text-white/90"
                        )}>{card.whatHappened}</p>
                      </div>
@@ -117,7 +117,7 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ onReply, limit }) => {
                            )}>Reflection</h3>
                         </div>
                         <p className={cn(
-                          "text-xs font-outfit line-clamp-3 italic overflow-hidden",
+                          "text-xs font-outfit line-clamp-3 italic overflow-hidden break-words",
                           card.status === "Open" ? "text-black/70" : "text-white/80"
                         )}>{card.response.iUnderstand}</p>
                      </div>
@@ -180,17 +180,17 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ onReply, limit }) => {
               <div className="bg-white/5 p-6 rounded-2xl border border-white/10 space-y-6 text-left">
                 <div className="min-w-0 overflow-hidden">
                   <h4 className="text-xs font-bebas text-neutral-500 tracking-widest uppercase mb-3">What Happened</h4>
-                  <p className="text-lg font-outfit text-white leading-relaxed whitespace-pre-wrap">{selectedCard.whatHappened}</p>
+                  <p className="text-lg font-outfit text-white leading-relaxed whitespace-pre-wrap break-words">{selectedCard.whatHappened}</p>
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
                   <div className="min-w-0 overflow-hidden">
                     <h4 className="text-xs font-bebas text-neutral-500 tracking-widest uppercase mb-3 text-pink-500/80">How I Felt</h4>
-                    <p className="text-base font-outfit text-neutral-200 italic leading-relaxed">&quot;{selectedCard.howIMadeFeel}&quot;</p>
+                    <p className="text-base font-outfit text-neutral-200 italic leading-relaxed break-words">&quot;{selectedCard.howIMadeFeel}&quot;</p>
                   </div>
                   <div className="min-w-0 overflow-hidden">
                     <h4 className="text-xs font-bebas text-neutral-500 tracking-widest uppercase mb-3 text-blue-500/80">What I Needed</h4>
-                    <p className="text-base font-outfit text-neutral-200 leading-relaxed">{selectedCard.whatINeeded}</p>
+                    <p className="text-base font-outfit text-neutral-200 leading-relaxed break-words">{selectedCard.whatINeeded}</p>
                   </div>
                 </div>
 
@@ -216,13 +216,13 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ onReply, limit }) => {
                 <div className="bg-blue-500/5 p-6 rounded-2xl border border-blue-500/10 space-y-6 overflow-hidden text-left">
                   <div className="min-w-0">
                     <h4 className="text-xs font-bebas text-blue-400 tracking-widest uppercase mb-3">Understanding</h4>
-                    <p className="text-lg font-outfit text-neutral-200 leading-relaxed font-light whitespace-pre-wrap">{selectedCard.response.iUnderstand}</p>
+                    <p className="text-lg font-outfit text-neutral-200 leading-relaxed font-light whitespace-pre-wrap break-words">{selectedCard.response.iUnderstand}</p>
                   </div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="min-w-0">
                       <h4 className="text-xs font-bebas text-blue-400 tracking-widest uppercase mb-3">Ownership</h4>
-                      <p className="text-base font-outfit text-neutral-300 leading-relaxed italic">{selectedCard.response.iMessedUp}</p>
+                      <p className="text-base font-outfit text-neutral-300 leading-relaxed italic break-words">{selectedCard.response.iMessedUp}</p>
                     </div>
                     <div className="bg-white/5 p-6 rounded-2xl min-w-0 overflow-hidden">
                       <h4 className="text-xs font-bebas text-blue-400 tracking-widest uppercase mb-1 text-[10px]">commitment</h4>

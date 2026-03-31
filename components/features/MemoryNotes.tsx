@@ -145,7 +145,7 @@ export const MemoryNotes: React.FC = () => {
                     <div className="flex gap-4">
                       <Book className="w-5 h-5 text-white/40 shrink-0" />
                       <div className="space-y-2">
-                        <p className="text-white font-medium font-outfit leading-relaxed line-clamp-3 overflow-hidden">{note.content}</p>
+                        <p className="text-white font-medium font-outfit leading-relaxed line-clamp-3 overflow-hidden break-words">{note.content}</p>
                         <div className="flex items-center gap-1 text-[9px] text-white/40 uppercase font-bebas pt-1 tracking-widest">
                            <Calendar className="w-2 h-2" /> {new Date(note.createdAt).toLocaleDateString()}
                         </div>
@@ -191,7 +191,7 @@ export const MemoryNotes: React.FC = () => {
                 <div className="flex gap-4">
                   <Book className="w-5 h-5 text-white/20 shrink-0" />
                   <div className="min-w-0 flex-1">
-                    <p className="text-white font-medium font-outfit text-sm leading-tight line-clamp-2 overflow-hidden">{note.content}</p>
+                    <p className="text-white font-medium font-outfit text-sm leading-tight line-clamp-2 overflow-hidden break-words">{note.content}</p>
                   </div>
                 </div>
               </GlassCard>
@@ -243,7 +243,7 @@ export const MemoryNotes: React.FC = () => {
             <div className="bg-blue-500/5 p-6 rounded-2xl border border-blue-500/10">
               <Book className="w-8 h-8 text-blue-500/30 mb-4" />
               <div className="space-y-4">
-                <p className="text-lg font-outfit text-white leading-relaxed">{selectedMemory.content}</p>
+                <p className="text-lg font-outfit text-white leading-relaxed break-words whitespace-pre-wrap">{selectedMemory.content}</p>
               </div>
             </div>
           </div>

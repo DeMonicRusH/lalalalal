@@ -22,6 +22,7 @@ interface MailboxContextType {
   positiveNotes: PositiveNote[];
   memoryNotes: MemoryNote[];
   weeklyCheckIns: WeeklyCheckIn[]; 
+  loading: boolean;
   login: (key: string) => Promise<boolean>;
   logout: () => Promise<void>;
   addCard: (card: Omit<MailboxCard, "id" | "createdAt" | "status">) => void;
@@ -42,6 +43,7 @@ const MailboxContext = createContext<MailboxContextType>({
   positiveNotes: [],
   memoryNotes: [],
   weeklyCheckIns: [],
+  loading: true,
   login: async () => false,
   logout: async () => {},
   addCard: () => {},
@@ -59,6 +61,7 @@ export const MailboxProvider: React.FC<{ children: React.ReactNode }> = ({ child
   const [positiveNotes, setPositiveNotes] = useState<PositiveNote[]>([]);
   const [memoryNotes, setMemoryNotes] = useState<MemoryNote[]>([]);
   const [weeklyCheckIns, setWeeklyCheckIns] = useState<WeeklyCheckIn[]>([]);
+  const [loading, setLoading] = useState(true);
 
   // Session Persistence for Role
   useEffect(() => {
@@ -95,6 +98,7 @@ export const MailboxProvider: React.FC<{ children: React.ReactNode }> = ({ child
         } as MailboxCard;
       });
       setCards(docs);
+      setLoading(false);
     });
 
     // Positive Notes Listener
@@ -216,6 +220,7 @@ export const MailboxProvider: React.FC<{ children: React.ReactNode }> = ({ child
     positiveNotes,
     memoryNotes,
     weeklyCheckIns,
+    loading,
     login,
     logout,
     addCard,
@@ -224,7 +229,7 @@ export const MailboxProvider: React.FC<{ children: React.ReactNode }> = ({ child
     addPositiveNote,
     addMemoryNote,
     addWeeklyCheckIn,
-  }), [role, displayNames, cards, positiveNotes, memoryNotes, weeklyCheckIns]);
+  }), [role, displayNames, cards, positiveNotes, memoryNotes, weeklyCheckIns, loading]);
 
   return (
     <MailboxContext.Provider value={value}>
