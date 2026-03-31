@@ -182,7 +182,7 @@ export const PositiveNotes: React.FC = () => {
             key="summary-view"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="grid gap-4"
+            className="grid gap-4 min-w-0"
           >
             {recentAllNotes.slice(0, 3).map((note) => (
               <GlassCard 
@@ -205,7 +205,7 @@ export const PositiveNotes: React.FC = () => {
                 <div className="flex gap-4">
                   <Quote className="w-5 h-5 text-black/20 shrink-0" />
                   <div className="min-w-0 flex-1">
-                    <p className="text-black font-medium font-outfit text-sm leading-tight line-clamp-2 overflow-hidden break-words">{note.oneThingRight}</p>
+                    <p className="text-black font-medium font-outfit text-sm leading-tight line-clamp-2 overflow-hidden break-all">{note.oneThingRight}</p>
                   </div>
                 </div>
               </GlassCard>
