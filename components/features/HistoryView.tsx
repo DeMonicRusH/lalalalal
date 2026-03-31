@@ -71,7 +71,7 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ onReply, limit }) => {
                          card.status === "Open" ? "text-black" : "text-white"
                        )}>What Happened</h3>
                        <p className={cn(
-                         "font-outfit text-sm leading-snug line-clamp-2 overflow-hidden break-words",
+                         "font-outfit text-sm leading-snug line-clamp-2 overflow-hidden break-all",
                          card.status === "Open" ? "text-black/80" : "text-white/90"
                        )}>{card.whatHappened}</p>
                      </div>
@@ -117,7 +117,7 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ onReply, limit }) => {
                            )}>Reflection</h3>
                         </div>
                         <p className={cn(
-                          "text-xs font-outfit line-clamp-3 italic overflow-hidden break-words",
+                          "text-xs font-outfit line-clamp-3 italic overflow-hidden break-all",
                           card.status === "Open" ? "text-black/70" : "text-white/80"
                         )}>{card.response.iUnderstand}</p>
                      </div>

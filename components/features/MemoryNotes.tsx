@@ -144,8 +144,8 @@ export const MemoryNotes: React.FC = () => {
                   >
                     <div className="flex gap-4">
                       <Book className="w-5 h-5 text-white/40 shrink-0" />
-                      <div className="space-y-2">
-                        <p className="text-white font-medium font-outfit leading-relaxed line-clamp-3 overflow-hidden break-words">{note.content}</p>
+                      <div className="space-y-2 min-w-0">
+                        <p className="text-white font-medium font-outfit leading-relaxed line-clamp-3 overflow-hidden break-all">{note.content}</p>
                         <div className="flex items-center gap-1 text-[9px] text-white/40 uppercase font-bebas pt-1 tracking-widest">
                            <Calendar className="w-2 h-2" /> {new Date(note.createdAt).toLocaleDateString()}
                         </div>

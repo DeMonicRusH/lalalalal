@@ -155,8 +155,8 @@ export const PositiveNotes: React.FC = () => {
                   >
                     <div className="flex gap-4">
                       <Quote className="w-5 h-5 text-black/40 shrink-0" />
-                      <div className="space-y-2">
-                        <p className="text-black font-semibold font-outfit leading-tight line-clamp-3 overflow-hidden break-words">{note.oneThingRight}</p>
+                      <div className="space-y-2 min-w-0">
+                        <p className="text-black font-semibold font-outfit leading-tight line-clamp-3 overflow-hidden break-all">{note.oneThingRight}</p>
                         {note.whatIAppreciated && (
                           <p className="text-black/70 text-xs italic font-outfit line-clamp-2 overflow-hidden break-words">{note.whatIAppreciated}</p>
                         )}
