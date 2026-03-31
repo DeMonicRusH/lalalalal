@@ -213,7 +213,17 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ onReply, limit }) => {
                 <div className="flex items-center gap-2 text-blue-500 font-bebas uppercase tracking-[0.2em] text-xs">
                   <MessageCircle className="w-4 h-4" /> The Reflection
                 </div>
-                <div className="bg-blue-500/5 p-6 rounded-2xl border border-blue-500/10 space-y-6 overflow-hidden text-left">
+                <div className="bg-blue-500/5 p-6 rounded-2xl border border-blue-500/10 space-y-6 overflow-hidden text-left relative">
+                  {selectedCard.response.sticker && (
+                    <motion.div 
+                      initial={{ scale: 0, rotate: -20 }}
+                      animate={{ scale: 1.5, rotate: 10 }}
+                      transition={{ type: "spring", damping: 10 }}
+                      className="absolute top-4 right-6 text-4xl pointer-events-none drop-shadow-lg"
+                    >
+                      {selectedCard.response.sticker}
+                    </motion.div>
+                  )}
                   <div className="min-w-0">
                     <h4 className="text-xs font-bebas text-blue-400 tracking-widest uppercase mb-3">Understanding</h4>
                     <p className="text-lg font-outfit text-neutral-200 leading-relaxed font-light whitespace-pre-wrap break-words">{selectedCard.response.iUnderstand}</p>

@@ -10,12 +10,19 @@ import { EnvelopeAnimation } from "@/components/ui/EnvelopeAnimation";
 import { HistoryView } from "@/components/features/HistoryView";
 import { Modal } from "@/components/ui/Modal";
 import { motion } from "framer-motion";
-import { Send, Heart, LogOut, History as HistoryIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Send, Heart, LogOut, History as HistoryIcon, RefreshCcw } from "lucide-react";
 
 export const WriterMode: React.FC = () => {
   const { addCard, logout, displayNames } = useMailbox();
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
+  const [isSyncing, setIsSyncing] = useState(false);
+
+  const handleSync = () => {
+    setIsSyncing(true);
+    setTimeout(() => setIsSyncing(false), 2000);
+  };
   
   const [mood, setMood] = useState<Mood>("Minor");
   const [needs, setNeeds] = useState<Need[]>([]);
@@ -55,8 +62,20 @@ export const WriterMode: React.FC = () => {
     <div className="bg-transparent text-white pt-8 pb-12 px-6 md:pt-12 md:px-12 font-outfit">
       <div className="max-w-4xl mx-auto flex flex-col gap-12">
         <header className="flex justify-between items-end pb-8 border-b border-white/5">
-          <div>
-            <h1 className="text-7xl font-bebas tracking-[0.1em] text-white">{(displayNames?.HER || "HER").toUpperCase()}</h1>
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-4">
+              <h1 className="text-7xl font-bebas tracking-[0.1em] text-white">{(displayNames?.HER || "HER").toUpperCase()}</h1>
+              <button 
+                onClick={handleSync}
+                className={cn(
+                  "p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-all",
+                  isSyncing && "animate-spin text-rose-500"
+                )}
+                title="Sync Mailbox"
+              >
+                <RefreshCcw className="w-4 h-4" />
+              </button>
+            </div>
             <p className="text-neutral-500 mt-2 flex items-center gap-2 uppercase text-[10px] tracking-[0.3em] font-bebas">
               <Heart className="w-3 h-3 text-pink-500 fill-pink-500/20" /> Honest Mailbox &bull; Share your heart
             </p>

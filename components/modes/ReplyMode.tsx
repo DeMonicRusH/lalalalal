@@ -7,11 +7,18 @@ import { GlassCard } from "@/components/ui/GlassCard";
 import { HistoryView } from "@/components/features/HistoryView";
 import { StickerPicker } from "@/components/ui/StickerPicker";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, CheckCircle2, ArrowLeft, LogOut, Heart } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { MessageCircle, CheckCircle2, ArrowLeft, LogOut, Heart, RefreshCcw } from "lucide-react";
 
 export const ReplyMode: React.FC = () => {
   const { cards, addResponse, updateCardStatus, logout, displayNames } = useMailbox();
   const [selectedCard, setSelectedCard] = useState<MailboxCard | null>(null);
+  const [isSyncing, setIsSyncing] = useState(false);
+
+  const handleSync = () => {
+    setIsSyncing(true);
+    setTimeout(() => setIsSyncing(false), 2000);
+  };
   
   // Form State
   const [iUnderstand, setIUnderstand] = useState("");
@@ -45,8 +52,20 @@ export const ReplyMode: React.FC = () => {
     <div className="bg-transparent text-white pt-8 pb-12 px-6 md:pt-12 md:px-12 font-outfit">
       <div className="max-w-4xl mx-auto flex flex-col gap-12">
         <header className="flex justify-between items-end pb-8 border-b border-white/5">
-          <div>
-            <h1 className="text-7xl font-bebas tracking-[0.1em] text-white leading-[0.9]">{(displayNames?.YOU || "YOU").toUpperCase()}</h1>
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-4">
+              <h1 className="text-7xl font-bebas tracking-[0.1em] text-white leading-[0.9]">{(displayNames?.YOU || "YOU").toUpperCase()}</h1>
+              <button 
+                onClick={handleSync}
+                className={cn(
+                  "p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-all",
+                  isSyncing && "animate-spin text-blue-500"
+                )}
+                title="Sync Mailbox"
+              >
+                <RefreshCcw className="w-4 h-4" />
+              </button>
+            </div>
             <p className="text-neutral-500 mt-2 flex items-center gap-2 uppercase text-[10px] tracking-[0.3em] font-bebas">
               <MessageCircle className="w-3 h-3 text-blue-500" /> Honest Mailbox &bull; Listen & Understand
             </p>
